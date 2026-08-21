@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AutoPrime — Bespoke luxury automobile acquisitions and chauffeured rentals. Rolls-Royce, Bentley, Lamborghini, Ferrari and more." />
+  <meta name="keywords" content="luxury cars, rolls royce, bentley, lamborghini, ferrari, supercar showroom, buy exotic car, luxury car rental" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="AutoPrime — Bespoke Luxury Automobiles" />
+  <meta property="og:description" content="Curated acquisitions &amp; chauffeured rentals of the world's finest automobiles." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <title>AutoPrime — Bespoke Luxury Automobiles</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20260821" />
+  <link rel="stylesheet" href="css/chat-bot.css?v=20260821" />
+</head>
+<body>
+
+  <!-- ============ WELCOME ============ -->
+  <div class="welcome" id="welcome" role="dialog" aria-label="Welcome to AutoPrime">
+    <div class="welcome-bg">
+      <img src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=2000&q=80" alt="" />
+    </div>
+    <div class="welcome-shade"></div>
+    <div class="welcome-vignette"></div>
+
+    <div class="welcome-particles" id="welcomeParticles" aria-hidden="true"></div>
+
+    <div class="welcome-inner">
+      <div class="welcome-logo" aria-hidden="true">
+        <svg viewBox="0 0 120 120" class="welcome-logo-svg">
+          <defs>
+            <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F5E6A0"/>
+              <stop offset="50%" stop-color="#C9A227"/>
+              <stop offset="100%" stop-color="#9A7C1C"/>
+            </linearGradient>
+            <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <circle cx="60" cy="60" r="54" fill="none" stroke="url(#logoGold)" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="url(#logoGold)" stroke-width="0.8" opacity="0.3" stroke-dasharray="8 12"/>
+          <path d="M60 22 L60 98" stroke="url(#logoGold)" stroke-width="0.5" opacity="0.2"/>
+          <path d="M22 60 L98 60" stroke="url(#logoGold)" stroke-width="0.5" opacity="0.2"/>
+          <text x="60" y="70" text-anchor="middle" font-family="Playfair Display, serif" font-size="42" font-weight="600" fill="url(#logoGold)" letter-spacing="8">A</text>
+        </svg>
+        <div class="welcome-logo-ring"></div>
+        <div class="welcome-logo-ring welcome-logo-ring-2"></div>
+      </div>
+
+      <p class="welcome-greet">Welcome</p>
+      <div class="welcome-line"></div>
+
+      <h1 class="welcome-name">AUTO<em>PRIME</em></h1>
+
+      <p class="welcome-tag">The Art of <span class="serif-italic">Driving</span> Perfection</p>
+
+      <div class="welcome-divider" aria-hidden="true">
+        <span class="welcome-divider-dot"></span>
+        <span class="welcome-divider-dot"></span>
+        <span class="welcome-divider-dot"></span>
+      </div>
+
+      <p class="welcome-note">We are honoured to have you here.<br>Step inside and discover a world of extraordinary automobiles —<br>where timeless elegance meets effortless performance.</p>
+
+      <div class="welcome-meta">
+        <span>Since 2011</span>
+        <span class="welcome-meta-sep" aria-hidden="true"></span>
+        <span>Bespoke Automobiles</span>
+        <span class="welcome-meta-sep" aria-hidden="true"></span>
+        <span>Global Concierge</span>
+      </div>
+
+      <button class="btn btn-gold btn-lg welcome-enter" id="welcomeEnter" type="button">
+        <span class="welcome-enter-text">Enter the Collection</span>
+        <span class="welcome-enter-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <div class="welcome-foot">
+      <span class="welcome-coords">34.0489° N, 111.0937° W</span>
+      <span class="welcome-foot-line"></span>
+      <span class="welcome-scroll-hint">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M19 12l-7 7-7-7"/>
+        </svg>
+      </span>
+    </div>
+
+    <div class="welcome-sound-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <path d="M15.5 4.5a5 5 0 0 1 0 7"/>
+        <path d="M19 3.5a9 9 0 0 1 0 11"/>
+      </svg>
+      <span>Sound On</span>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+<span class="brand-mark brand-mark-car">
+          <span class="badge-car">
+            <svg viewBox="0 0 40 26" fill="none" aria-hidden="true">
+              <path d="M2 13.5 L5.5 8.5 L10 6.5 L16 6 L22 6.5 L27 8 L33 9 L37 12 L38 15 L34 15.5 L31.5 19 L24 19.5 L12 19.5 L9.5 17 L3.5 17 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14 7 L9 11 L13 11 L16.5 7 Z" fill="currentColor" opacity="0.85"/>
+              <circle cx="13" cy="16.5" r="2.6" fill="currentColor"/>
+              <circle cx="26" cy="16.5" r="2.6" fill="currentColor"/>
+              <circle cx="13" cy="16.5" r="0.9" fill="#111827"/>
+              <circle cx="26" cy="16.5" r="0.9" fill="#111827"/>
+              <path d="M30 7.5 L34 10.5 L33 13 L29 11 Z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="car-trail"></span>
+          </span>
+        </span>
+        <span class="brand-text">AUTO<em>PRIME</em></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#fleet" class="nav-link">The Fleet</a>
+        <a href="#showcase" class="nav-link">Showcase</a>
+        <a href="#rentals" class="nav-link">Rentals</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#concierge" class="nav-link">Concierge</a>
+        <a href="#contact" class="btn btn-gold nav-cta">Book Appointment</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-media">
+      <img src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=2000&q=90" alt="Luxury Rolls-Royce" />
+    </div>
+    <div class="hero-shade"></div>
+
+    <div class="container hero-content">
+      <p class="hero-eyebrow reveal">Since 2011 · Bespoke Automobiles</p>
+      <h1 class="hero-title reveal">
+        The Art of <br />
+        <span class="serif-italic">Driving</span> Perfection
+      </h1>
+      <p class="hero-sub reveal">Curated acquisitions &amp; chauffeured rentals of the world's finest automobiles.</p>
+      <div class="hero-actions reveal">
+        <a href="#fleet" class="btn btn-gold btn-lg">Explore the Fleet <span>→</span></a>
+        <a href="#rentals" class="btn btn-ghost btn-lg">Private Rental</a>
+      </div>
+    </div>
+
+    <div class="hero-meta reveal">
+      <div class="hero-scroll">SCROLL <span class="hero-scroll-line"></span></div>
+      <div class="hero-coord">34.0489° N, 111.0937° W</div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>ROLLS-ROYCE</span><span>◆</span><span>BENTLEY</span><span>◆</span><span>LAMBORGHINI</span><span>◆</span><span>FERRARI</span><span>◆</span><span>ASTON MARTIN</span><span>◆</span><span>MAYBACH</span><span>◆</span><span>PORSCHE</span><span>◆</span><span>MASERATI</span><span>◆</span><span>BENTLEY</span><span>◆</span><span>ROLLS-ROYCE</span><span>◆</span><span>LAMBORGHINI</span><span>◆</span><span>FERRARI</span><span>◆</span>
+    </div>
+  </div>
+
+  <!-- ============ THE FLEET (BUY) ============ -->
+  <section class="section section-dark" id="fleet">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-tag">01 — The Fleet</p>
+        <h2 class="section-title">Acquisition <span class="serif-italic">Collection</span></h2>
+        <p class="section-sub">A hand-selected portfolio of investment-grade automobiles, each certified by our master technicians.</p>
+      </div>
+
+      <div class="fleet-carousel reveal" id="fleetCarousel">
+        <div class="fc-track" id="fcTrack"></div>
+        <button class="fc-nav fc-prev" id="fcPrev" aria-label="Previous car">‹</button>
+        <button class="fc-nav fc-next" id="fcNext" aria-label="Next car">›</button>
+        <div class="fc-dots" id="fcDots"></div>
+        <div class="fc-progress" id="fcProgress"></div>
+        <div class="fc-sound" id="fcSound" title="Engine sound on/off">🔊</div>
+      </div>
+
+      <div class="filters reveal">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search marque or model" />
+        </div>
+        <select id="filterMake">
+          <option value="all">All Marques</option>
+          <option value="rolls-royce">Rolls-Royce</option>
+          <option value="bentley">Bentley</option>
+          <option value="lamborghini">Lamborghini</option>
+          <option value="ferrari">Ferrari</option>
+          <option value="aston">Aston Martin</option>
+          <option value="maybach">Maybach</option>
+          <option value="porsche">Porsche</option>
+          <option value="maserati">Maserati</option>
+        </select>
+        <select id="filterType">
+          <option value="all">All Types</option>
+          <option value="grand">Grand Tourer</option>
+          <option value="sports">Supercar</option>
+          <option value="suv">Luxury SUV</option>
+          <option value="limousine">Limousine</option>
+        </select>
+        <select id="filterPrice">
+          <option value="all">Any Value</option>
+          <option value="low">$200K – $400K</option>
+          <option value="mid">$400K – $700K</option>
+          <option value="high">$700K+</option>
+        </select>
+        <select id="filterYear">
+          <option value="all">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <select id="filterFuel">
+          <option value="all">All Fuel</option>
+          <option value="v12">V12</option>
+          <option value="w12">W12</option>
+          <option value="v8">V8</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+      </div>
+
+      <div class="compare-bar" id="compareBar">
+        <div class="compare-info">
+          <strong>Compare Vehicles</strong>
+          <span id="compareCount">0/3</span>
+        </div>
+        <div class="compare-list" id="compareList"></div>
+        <button class="btn btn-gold" id="compareBtn" disabled>Compare Now</button>
+      </div>
+
+      <div class="fleet-grid" id="carGrid"></div>
+
+      <div class="center-btn reveal">
+        <button class="btn btn-outline-dark btn-lg" id="loadMoreBtn">View Full Portfolio</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOWCASE / FEATURED ============ -->
+  <section class="section section-dark showcase" id="showcase">
+    <div class="container">
+      <div class="showcase-grid">
+        <div class="showcase-text reveal">
+          <p class="section-tag">02 — Signature Model</p>
+          <h2 class="section-title">Phantom Serenity</h2>
+          <p class="section-sub">The pinnacle of motoring opulence. Hand-built, whisper-quiet, and utterly commanding. Our flagship acquisition, now reserved for private viewings.</p>
+          <ul class="showcase-list">
+            <li><span>Powertrain</span> 6.75L V12 Twin-Turbo</li>
+            <li><span>0–100 km/h</span> 5.1 seconds</li>
+            <li><span>Interior</span> Hand-stitched Aniline Leather</li>
+            <li><span>Extras</span> Starlight Headliner, Champagne Cooler</li>
+          </ul>
+          <div class="showcase-cta">
+            <a href="#concierge" class="btn btn-gold">Arrange Private Viewing</a>
+            <span class="showcase-price">$585,000</span>
+          </div>
+        </div>
+        <div class="showcase-media reveal">
+          <div class="showcase-frame">
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1400&q=90" alt="Luxury flagship sedan" />
+          </div>
+          <div class="showcase-float">
+            <span class="float-num">01</span>
+            <span class="float-label">Signature Series</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RENTALS ============ -->
+  <section class="section" id="rentals">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-tag">03 — Private Rentals</p>
+        <h2 class="section-title">Chauffeured <span class="serif-italic">Experiences</span></h2>
+        <p class="section-sub">By the hour, the day, or the week — with discreet professional chauffeurs on request.</p>
+      </div>
+
+      <div class="rental-cards">
+        <div class="rental-card reveal">
+          <p class="rental-plan">Executive</p>
+          <p class="rental-price">$189<small>/ day</small></p>
+          <ul>
+            <li>Mercedes S-Class / BMW 7 Series</li>
+            <li>Professional chauffeur included</li>
+            <li>Airport transfers &amp; city touring</li>
+            <li>Full insurance &amp; concierge line</li>
+          </ul>
+          <button class="btn btn-outline-dark btn-block rent-now" data-car="Executive">Reserve</button>
+        </div>
+        <div class="rental-card featured reveal">
+          <div class="badge-hot">Signature</div>
+          <p class="rental-plan">Grand Tour</p>
+          <p class="rental-price">$480<small>/ day</small></p>
+          <ul>
+            <li>Bentley Continental GT / Rolls-Royce Ghost</li>
+            <li>Champagne welcome service</li>
+            <li>Scenic route itinerary curated</li>
+            <li>Complimentary detailing &amp; valet</li>
+          </ul>
+          <button class="btn btn-gold btn-block rent-now" data-car="Grand Tour">Reserve</button>
+        </div>
+        <div class="rental-card reveal">
+          <p class="rental-plan">Racing</p>
+          <p class="rental-price">$950<small>/ day</small></p>
+          <ul>
+            <li>Lamborghini / Ferrari / McLaren</li>
+            <li>Track day access &amp; instruction</li>
+            <li>Photography &amp; film package</li>
+            <li>Track insurance included</li>
+          </ul>
+          <button class="btn btn-outline-dark btn-block rent-now" data-car="Racing">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section section-dark" id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-tag">04 — Gallery</p>
+        <h2 class="section-title">The <span class="serif-italic">Showroom</span></h2>
+      </div>
+      <div class="gallery-grid reveal" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONCIERGE / ABOUT ============ -->
+  <section class="section" id="concierge">
+    <div class="container concierge-grid">
+      <div class="concierge-media reveal">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1400&q=90" alt="Luxury Bentley interior" />
+        <div class="concierge-badge">
+          <span class="badge-num">15+</span>
+          <span>Years of<br/>Quiet Excellence</span>
+        </div>
+      </div>
+      <div class="concierge-content reveal">
+        <p class="section-tag">05 — Concierge</p>
+        <h2 class="section-title">Discretion is Our <span class="serif-italic">Signature</span></h2>
+        <p class="section-sub">Beyond sales and rentals, our concierge sources rare commissions, handles private collections, and manages bespoke restorations for discerning clientele worldwide.</p>
+        <div class="concierge-features">
+          <div class="feature-item"><span class="feature-num">01</span><div><h4>Bespoke Sourcing</h4><p>We locate limited-edition and commission-built automobiles to your exact specification.</p></div></div>
+          <div class="feature-item"><span class="feature-num">02</span><div><h4>Private Collection</h4><p>Climate-controlled storage, detailing, and care for multi-car owners.</p></div></div>
+          <div class="feature-item"><span class="feature-num">03</span><div><h4>Restoration</h4><p>Award-winning ateliers return heritage machines to concours condition.</p></div></div>
+        </div>
+        <div class="concierge-stats">
+          <div class="cstat"><span class="cstat-num" data-count="1200">0</span><span>Vehicles Delivered</span></div>
+          <div class="cstat"><span class="cstat-num" data-count="32">0</span><span>Countries Served</span></div>
+          <div class="cstat"><span class="cstat-num" data-count="98">0</span><span>Client Satisfaction %</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section section-light" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-tag">06 — Testimonials</p>
+        <h2 class="section-title">In Their <span class="serif-italic">Own Words</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"AutoPrime sourced a 1963 DB5 to my precise restoration brief. The result was beyond anything I imagined."</p>
+          <div class="testimonial-user"><span class="avatar">A</span><div><strong>Alexander Whitmore</strong><span>Private Collector</span></div></div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"The Grand Tour rental was flawless — the Bentley arrived immaculate, the chauffeur discreet and impeccable."</p>
+          <div class="testimonial-user"><span class="avatar">S</span><div><strong>Sophia Laurent</strong><span>VIP Guest</span></div></div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"My third acquisition through AutoPrime. Their discretion and eye for value are unmatched in the industry."</p>
+          <div class="testimonial-user"><span class="avatar">M</span><div><strong>Marcus Delgado</strong><span>Entrepreneur</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-tag">07 — Contact</p>
+        <h2 class="section-title">Begin Your <span class="serif-italic">Inquiry</span></h2>
+        <p class="section-sub">Our advisors respond within hours. All enquiries handled with absolute discretion.</p>
+        <div class="contact-methods">
+          <div class="contact-method"><span class="cm-icon">◎</span><div><h4>Private Viewings</h4><p>By appointment only</p></div></div>
+          <div class="contact-method"><span class="cm-icon">✉</span><div><h4>concierge@autoprime.com</h4><p>For acquisitions &amp; sourcing</p></div></div>
+          <div class="contact-method"><span class="cm-icon">☎</span><div><h4>+1 (310) 555-0134</h4><p>Rental reservations</p></div></div>
+          <div class="contact-method"><span class="cm-icon">◈</span><div><h4>Beverly Hills · Monaco · Dubai</h4><p>Salons worldwide</p></div></div>
+        </div>
+      </div>
+      <form class="contact-form reveal" id="contactForm">
+        <h3>Request a Private Consultation</h3>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+1 000 000 0000" />
+        </div>
+        <div class="form-group">
+          <label for="interest">I am interested in</label>
+          <select id="interest">
+            <option value="acquisition">Acquiring a vehicle</option>
+            <option value="rental">Private rental</option>
+            <option value="sourcing">Bespoke sourcing</option>
+            <option value="restoration">Restoration</option>
+            <option value="collection">Collection management</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" rows="4" placeholder="Share your requirements..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg btn-block">Request Consultation</button>
+        <p class="form-success" id="formSuccess">✓ Request received. Our concierge will contact you shortly.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><span class="brand-mark brand-mark-car"><span class="badge-car"><svg viewBox="0 0 40 26" fill="none"><path d="M2 13.5 L5.5 8.5 L10 6.5 L16 6 L22 6.5 L27 8 L33 9 L37 12 L38 15 L34 15.5 L31.5 19 L24 19.5 L12 19.5 L9.5 17 L3.5 17 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 7 L9 11 L13 11 L16.5 7 Z" fill="currentColor" opacity="0.85"/><circle cx="13" cy="16.5" r="2.6" fill="currentColor"/><circle cx="26" cy="16.5" r="2.6" fill="currentColor"/><circle cx="13" cy="16.5" r="0.9" fill="#111827"/><circle cx="26" cy="16.5" r="0.9" fill="#111827"/><path d="M30 7.5 L34 10.5 L33 13 L29 11 Z" fill="currentColor" opacity="0.5"/></svg><span class="car-trail"></span></span></span><span class="brand-text">AUTO<em>PRIME</em></span></a>
+        <p>Bespoke automobile acquisition, rental, and concierge services for the world's most discerning clients.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#fleet">The Fleet</a>
+        <a href="#showcase">Signature Model</a>
+        <a href="#rentals">Private Rentals</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#concierge">Bespoke Sourcing</a>
+        <a href="#concierge">Collection Care</a>
+        <a href="#concierge">Restoration</a>
+        <a href="#contact">Appointments</a>
+      </div>
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>New acquisitions and private viewings, first.</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit" class="btn btn-gold">→</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 AutoPrime Motor Works. All rights reserved. <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a> · <a href="admin.html">Admin</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <!-- ============ WHATSAPP ============ -->
+  <a class="wa-float" id="waFloat" href="https://wa.me/13105550134?text=Hello%20AutoPrime%2C%20I%20would%20like%20an%20enquiry%20about%20a%20vehicle." target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Move me anywhere — drag to reposition">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ============ AI CHAT BOT ============ -->
+  <div class="chatbot" id="chatbot">
+    <button class="chatbot-fab" id="chatFab" aria-label="Open chat">
+      <svg class="fab-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+      <svg class="fab-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+      <span class="fab-pulse"></span>
+    </button>
+
+    <div class="chatbot-panel" id="chatPanel" aria-hidden="true">
+      <header class="chatbot-header">
+        <div class="chatbot-avatar">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M20 2 L36 10 L20 38 L4 10 Z" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="20" cy="15" r="4" fill="currentColor"/></svg>
+        </div>
+        <div class="chatbot-title">
+          <h3>AutoPrime Concierge</h3>
+          <p><span class="chatbot-online"></span> Private Advisor · Online</p>
+        </div>
+        <button class="chatbot-min" id="chatMin" aria-label="Minimise chat">–</button>
+      </header>
+
+      <div class="chatbot-messages" id="chatMessages"></div>
+
+      <div class="chatbot-voicebar" id="chatVoiceBar">
+        <span class="voice-hint">Listening… speak now</span>
+        <div class="voice-wave">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="chatbot-suggestions" id="chatSuggestions"></div>
+
+      <form class="chatbot-input" id="chatForm">
+        <input type="text" id="chatInput" placeholder="Ask about any automobile..." autocomplete="off" />
+        <button type="button" class="chatbot-speak" id="chatSpeak" aria-label="Voice replies" title="Voice replies">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/>
+          </svg>
+        </button>
+        <button type="button" class="chatbot-mic" id="chatMic" aria-label="Voice input" title="Speak your question">
+          <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v4"/>
+          </svg>
+          <svg class="mic-stop" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+        </button>
+        <button type="submit" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/cars.js?v=20260821"></script>
+  <script src="js/branding.js?v=20260821"></script>
+  <script src="js/chat-bot.js?v=20260821"></script>
+  <script src="js/main.js?v=20260821"></script>
+</body>
+</html>

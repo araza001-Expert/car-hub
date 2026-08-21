@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoPrime — Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <div class="login-brand">
+        <span class="login-logo">🏎️</span>
+        <h1>AutoPrime</h1>
+        <p class="login-sub">Showroom Management Console</p>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginUser">Username</label>
+          <input type="text" id="loginUser" placeholder="admin" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-gold btn-block">Sign In to Console</button>
+        <p class="login-error" id="loginError"></p>
+      </form>
+      <a href="/" class="back-link">← Back to Website</a>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN DASHBOARD ============ -->
+  <div class="admin-wrap" id="adminWrap" style="display:none">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-logo">🏎️</span>
+        <div>
+          <span class="brand-name">AutoPrime</span>
+          <span class="brand-sub">Console</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="dashboard">
+          <span class="nav-icon">◈</span> Dashboard
+          <span class="nav-badge" id="badgeDashboard"></span>
+        </button>
+        <button class="nav-item" data-tab="cars">
+          <span class="nav-icon">🚗</span> Inventory
+          <span class="nav-count" id="navCarsCount"></span>
+        </button>
+        <button class="nav-item" data-tab="pipeline">
+          <span class="nav-icon">⛓</span> Sales Pipeline
+        </button>
+        <button class="nav-item" data-tab="financials">
+          <span class="nav-icon">💰</span> Financials
+          <span class="nav-badge" id="badgeInvoices"></span>
+        </button>
+        <button class="nav-item" data-tab="bookings">
+          <span class="nav-icon">📅</span> Bookings
+          <span class="nav-badge" id="badgeBookings"></span>
+        </button>
+        <button class="nav-item" data-tab="messages">
+          <span class="nav-icon">✉</span> Messages
+          <span class="nav-badge" id="badgeMessages"></span>
+        </button>
+        <button class="nav-item" data-tab="customers">
+          <span class="nav-icon">👤</span> Customers
+        </button>
+        <button class="nav-item" data-tab="branding">
+          <span class="nav-icon">🎨</span> Branding
+        </button>
+        <button class="nav-item" data-tab="analytics">
+          <span class="nav-icon">📊</span> Analytics
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <span class="nav-icon">⚙</span> Settings
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="/" class="btn btn-outline btn-block">View Website</a>
+        <button class="btn btn-ghost btn-block" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- ============ DASHBOARD ============ -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Overview</p>
+            <h2>Welcome back, Admin</h2>
+            <p class="panel-sub">Here's what's happening at your showroom today.</p>
+          </div>
+          <div class="panel-actions">
+            <div class="notif-bell" id="notifBell">
+              <span class="bell-icon">🔔</span>
+              <span class="notif-badge" id="notifBadge"></span>
+              <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-head">Notifications</div>
+                <div class="notif-list" id="notifList"></div>
+              </div>
+            </div>
+            <span class="live-dot"></span> Live
+          </div>
+        </div>
+
+        <!-- AI INSIGHTS -->
+        <div class="ai-insights" id="aiInsights"></div>
+
+        <div class="stat-grid" id="statGrid">
+          <div class="stat-card">
+            <div class="stat-card-top"><span class="stat-icon">🚗</span><span class="stat-kpi">Inventory</span></div>
+            <div class="stat-info"><span class="stat-num gold" id="statCars">0</span><span class="stat-label">Vehicles in Fleet</span></div>
+            <div class="stat-trend up">▲ <span id="trendCars">0</span> this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-top"><span class="stat-icon">💰</span><span class="stat-kpi">Assets</span></div>
+            <div class="stat-info"><span class="stat-num gold" id="statValue">$0</span><span class="stat-label">Total Fleet Value</span></div>
+            <div class="stat-mini"><span>Avg price</span><b id="statAvg">$0</b></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-top"><span class="stat-icon">📅</span><span class="stat-kpi">Bookings</span></div>
+            <div class="stat-info"><span class="stat-num gold" id="statBookings">0</span><span class="stat-label">Total Bookings</span></div>
+            <div class="stat-mini"><span>Pending</span><b id="statPendingBookings">0</b></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-top"><span class="stat-icon">✉</span><span class="stat-kpi">Leads</span></div>
+            <div class="stat-info"><span class="stat-num gold" id="statMessages">0</span><span class="stat-label">New Messages</span></div>
+            <div class="stat-mini"><span>Unread</span><b id="statUnread">0</b></div>
+          </div>
+        </div>
+
+        <!-- Revenue KPIs -->
+        <div class="data-grid" id="revenueGrid">
+          <div class="data-cell"><div class="dc-label">Monthly Revenue</div><div class="dc-value" id="revMonthly">$0</div><div class="dc-sub" id="revMonthlyTrend">▲ 0%</div></div>
+          <div class="data-cell"><div class="dc-label">Year to Date</div><div class="dc-value" id="revYTD">$0</div><div class="dc-sub">Estimated</div></div>
+          <div class="data-cell"><div class="dc-label">Projection (12mo)</div><div class="dc-value" id="revProjection">$0</div><div class="dc-sub" id="revProjectionTrend">▲ Growth</div></div>
+          <div class="data-cell"><div class="dc-label">Avg Deal Value</div><div class="dc-value" id="revAvgDeal">$0</div><div class="dc-sub">Per vehicle</div></div>
+        </div>
+
+        <div class="dash-grid-3">
+          <!-- Revenue trend SVG chart -->
+          <div class="card">
+            <div class="card-head">
+              <h3>Revenue Flow</h3>
+              <span class="card-sub" id="chartPeriod">12-month trend</span>
+            </div>
+            <div class="chart-legend">
+              <span class="chart-legend-item"><i style="background:var(--gold)"></i> Revenue</span>
+              <span class="chart-legend-item"><i class="dash"></i> Projection</span>
+            </div>
+            <div class="svg-chart-wrap" id="revChart"></div>
+          </div>
+          <!-- Data flow funnel -->
+          <div class="card">
+            <div class="card-head"><h3>Data Flow</h3><span class="card-sub">conversion pipeline</span></div>
+            <div class="funnel" id="funnelChart"></div>
+          </div>
+        </div>
+
+        <div class="dash-grid-2">
+          <!-- Top performing models -->
+          <div class="card">
+            <div class="card-head"><h3>Top Performing Models</h3><span class="card-sub">by demand</span></div>
+            <div class="perf-list" id="perfList"></div>
+          </div>
+          <!-- Fleet distribution (kept) -->
+          <div class="card">
+            <div class="card-head"><h3>Fleet Distribution</h3><span class="card-sub">by type</span></div>
+            <div class="bar-chart" id="typeChart"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Recent Activity</h3><span class="card-sub">latest events</span></div>
+          <div class="activity-list" id="activityList"></div>
+        </div>
+      </section>
+
+      <!-- ============ CARS / INVENTORY ============ -->
+      <section class="tab-panel" id="tab-cars">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Inventory</p>
+            <h2>Manage Fleet</h2>
+            <p class="panel-sub">Add, edit, search and manage your vehicles.</p>
+          </div>
+          <div class="panel-actions">
+            <button class="btn btn-gold" id="addCarBtn">+ Add New Car</button>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="search-box">
+            <input type="text" id="carSearch" placeholder="Search inventory..." />
+          </div>
+          <select id="filterType">
+            <option value="all">All Types</option>
+            <option value="sports">Sports</option>
+            <option value="suv">SUV</option>
+            <option value="grand">Grand Tourer</option>
+            <option value="limousine">Limousine</option>
+            <option value="electric">Electric</option>
+          </select>
+          <select id="sortCars">
+            <option value="newest">Newest First</option>
+            <option value="price-high">Price: High → Low</option>
+            <option value="price-low">Price: Low → High</option>
+            <option value="name">Name: A → Z</option>
+          </select>
+        </div>
+
+        <div class="car-list" id="carList"></div>
+      </section>
+
+      <!-- ============ SALES PIPELINE ============ -->
+      <section class="tab-panel" id="tab-pipeline">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Sales</p>
+            <h2>Deal Pipeline</h2>
+            <p class="panel-sub">Drag deals across stages to track your sales flow.</p>
+          </div>
+          <div class="panel-actions">
+            <button class="btn btn-gold" id="addDealBtn">+ New Deal</button>
+          </div>
+        </div>
+        <div class="pipeline-summary" id="pipelineSummary"></div>
+        <div class="kanban" id="kanbanBoard"></div>
+      </section>
+
+      <!-- ============ FINANCIALS ============ -->
+      <section class="tab-panel" id="tab-financials">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Finance</p>
+            <h2>Financial Ledger</h2>
+            <p class="panel-sub">Revenue, invoices and exportable reports.</p>
+          </div>
+          <div class="panel-actions">
+            <button class="btn btn-outline" id="exportCsvBtn">⬇ Export CSV</button>
+          </div>
+        </div>
+
+        <div class="stat-grid small">
+          <div class="stat-card"><div class="stat-info"><span class="stat-num gold" id="finTotal">$0</span><span class="stat-label">Total Revenue</span></div></div>
+          <div class="stat-card"><div class="stat-info"><span class="stat-num gold" id="finPending">$0</span><span class="stat-label">Outstanding</span></div></div>
+          <div class="stat-card"><div class="stat-info"><span class="stat-num gold" id="finInvoices">0</span><span class="stat-label">Invoices</span></div></div>
+          <div class="stat-card"><div class="stat-info"><span class="stat-num gold" id="finPaid">0</span><span class="stat-label">Paid</span></div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Revenue Breakdown</h3>
+            <span class="card-sub">sales vs rentals</span>
+          </div>
+          <div class="svg-chart-wrap" id="finChart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Invoice Register</h3><span class="card-sub">generated invoices</span></div>
+          <div class="list-table" id="invoiceList"></div>
+        </div>
+      </section>
+
+      <!-- ============ BOOKINGS ============ -->
+      <section class="tab-panel" id="tab-bookings">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Reservations</p>
+            <h2>Rental Bookings</h2>
+            <p class="panel-sub">Manage rental requests from your website.</p>
+          </div>
+          <div class="panel-actions">
+            <select id="filterBookingStatus">
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+        <div class="list-table" id="bookingsList"></div>
+      </section>
+
+      <!-- ============ MESSAGES ============ -->
+      <section class="tab-panel" id="tab-messages">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Inbox</p>
+            <h2>Messages</h2>
+            <p class="panel-sub">Enquiries sent through the website contact form.</p>
+          </div>
+        </div>
+        <div class="list-table" id="messagesList"></div>
+      </section>
+
+      <!-- ============ CUSTOMERS ============ -->
+      <section class="tab-panel" id="tab-customers">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">CRM</p>
+            <h2>Customers</h2>
+            <p class="panel-sub">Click a customer to view their 360° profile.</p>
+          </div>
+        </div>
+        <div class="list-table" id="customersList"></div>
+      </section>
+
+      <!-- ============ BRANDING ============ -->
+      <section class="tab-panel" id="tab-branding">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Customization</p>
+            <h2>Client Branding</h2>
+            <p class="panel-sub">Make the website truly theirs — logo, name, colors, fonts.</p>
+          </div>
+        </div>
+
+        <div class="branding-grid">
+          <div class="card">
+            <h3>Brand Identity</h3>
+            <div class="form-group">
+              <label for="brandName">Brand Name</label>
+              <input type="text" id="brandName" placeholder="AutoPrime" />
+            </div>
+            <div class="form-group">
+              <label for="brandLogo">Logo URL</label>
+              <input type="text" id="brandLogo" placeholder="https://example.com/logo.png" />
+              <small>Leave empty to use the default emblem.</small>
+            </div>
+            <div class="form-group">
+              <label for="brandTagline">Tagline</label>
+              <input type="text" id="brandTagline" placeholder="Bespoke Automobiles" />
+            </div>
+            <div class="form-group">
+              <label for="brandFont">Heading Font</label>
+              <select id="brandFont">
+                <option value="serif">Classic Serif (Cormorant)</option>
+                <option value="modern">Modern Sans (Inter)</option>
+                <option value="luxury">Luxury (Playfair)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Color Scheme</h3>
+            <div class="color-row">
+              <div class="form-group"><label for="colorPrimary">Primary</label><input type="color" id="colorPrimary" value="#c8a24c" /></div>
+              <div class="form-group"><label for="colorAccent">Accent</label><input type="color" id="colorAccent" value="#e8cf8f" /></div>
+            </div>
+            <div class="color-row">
+              <div class="form-group"><label for="colorDark">Background</label><input type="color" id="colorDark" value="#0a0a0c" /></div>
+              <div class="form-group"><label for="colorCard">Card</label><input type="color" id="colorCard" value="#141419" /></div>
+            </div>
+            <p class="hint">Changes preview live below.</p>
+          </div>
+
+          <div class="card card-wide">
+            <h3>Live Preview</h3>
+            <div class="brand-preview">
+              <div class="preview-nav"><span class="preview-logo" id="previewLogo">🏎️</span><span class="preview-name" id="previewName">AUTO PRIME</span></div>
+              <div class="preview-btn" id="previewBtn">Explore the Fleet</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-gold btn-save" id="saveBrandingBtn">Save Branding</button>
+      </section>
+
+      <!-- ============ ANALYTICS ============ -->
+      <section class="tab-panel" id="tab-analytics">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Insights</p>
+            <h2>Analytics</h2>
+            <p class="panel-sub">Performance snapshot of your showroom.</p>
+          </div>
+        </div>
+
+        <div class="stat-grid small">
+          <div class="stat-card"><div class="stat-info"><span class="stat-num" id="anaViews">0</span><span class="stat-label">Page Views</span></div></div>
+          <div class="stat-card"><div class="stat-info"><span class="stat-num" id="anaLeads">0</span><span class="stat-label">Leads Captured</span></div></div>
+          <div class="stat-card"><div class="stat-info"><span class="stat-num" id="anaConv">0%</span><span class="stat-label">Conversion</span></div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Leads Over Time</h3><span class="card-sub">last 7 days</span></div>
+          <div class="line-chart" id="lineChart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Predictive Forecast</h3><span class="card-sub">30-day projection</span></div>
+          <div class="chart-legend">
+            <span class="chart-legend-item"><i style="background:var(--info)"></i> Historical</span>
+            <span class="chart-legend-item"><i class="dash"></i> Predicted</span>
+          </div>
+          <div class="svg-chart-wrap" id="forecastChart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Engagement Analysis</h3><span class="card-sub">lead sources</span></div>
+          <div class="data-grid" id="sourceGrid">
+            <div class="data-cell"><div class="dc-label">Direct</div><div class="dc-value" id="srcDirect">0%</div><div class="dc-sub">▲ Website visits</div></div>
+            <div class="data-cell"><div class="dc-label">Rentals</div><div class="dc-value" id="srcRentals">0%</div><div class="dc-sub">▲ Booking clicks</div></div>
+            <div class="data-cell"><div class="dc-label">Enquiries</div><div class="dc-value" id="srcEnq">0%</div><div class="dc-sub">▲ Contact form</div></div>
+            <div class="data-cell"><div class="dc-label">Newsletter</div><div class="dc-value" id="srcNews">0%</div><div class="dc-sub">▲ Subscribers</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS ============ -->
+      <section class="tab-panel" id="tab-settings">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Preferences</p>
+            <h2>Settings</h2>
+            <p class="panel-sub">Security and console preferences.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Change Password</h3>
+          <div class="form-group"><label for="newPass">New Password</label><input type="password" id="newPass" placeholder="Enter new password" /></div>
+          <div class="form-group"><label for="confirmPass">Confirm Password</label><input type="password" id="confirmPass" placeholder="Confirm new password" /></div>
+          <button class="btn btn-gold" id="changePassBtn">Update Password</button>
+        </div>
+        <div class="card">
+          <h3>Console Accent</h3>
+          <p class="hint">Choose the accent color theme for the admin console.</p>
+          <div class="accent-picker" id="accentPicker">
+            <button class="accent-opt active" data-accent="gold" style="--ac:var(--gold)"><span></span> Gold</button>
+            <button class="accent-opt" data-accent="emerald" style="--ac:#3ecf8a"><span></span> Emerald</button>
+            <button class="accent-opt" data-accent="sapphire" style="--ac:#5aa5ff"><span></span> Sapphire</button>
+            <button class="accent-opt" data-accent="ruby" style="--ac:#ff5a6e"><span></span> Ruby</button>
+            <button class="accent-opt" data-accent="platinum" style="--ac:#cfd4dd"><span></span> Platinum</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Data Backup</h3>
+          <p class="hint">Download a full backup of your data as a JSON file.</p>
+          <div class="btn-row">
+            <button class="btn btn-gold" id="backupBtn">⬇ Backup Data</button>
+            <button class="btn btn-outline" id="restoreInputBtn">Restore Backup</button>
+            <input type="file" id="restoreFile" accept=".json" style="display:none" />
+          </div>
+        </div>
+        <div class="card">
+          <h3>Danger Zone</h3>
+          <p class="hint">Reset the entire showroom back to the original default fleet and branding.</p>
+          <div class="btn-row">
+            <button class="btn btn-danger" id="resetCarsBtn">Reset Fleet</button>
+            <button class="btn btn-danger" id="resetAllBtn">Reset Everything</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============ CAR MODAL ============ -->
+  <div class="modal-overlay" id="carModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="modalTitle">Add New Car</h3>
+        <button class="modal-close" id="modalClose">×</button>
+      </div>
+      <form id="carForm">
+        <input type="hidden" id="carId" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cName">Car Name *</label>
+            <input type="text" id="cName" required />
+          </div>
+          <div class="form-group">
+            <label for="cYear">Year *</label>
+            <input type="number" id="cYear" min="2000" max="2030" required />
+          </div>
+          <div class="form-group">
+            <label for="cMake">Brand *</label>
+            <input type="text" id="cMake" placeholder="e.g. lamborghini" required />
+          </div>
+          <div class="form-group">
+            <label for="cType">Type *</label>
+            <select id="cType">
+              <option value="sports">Sports</option>
+              <option value="suv">SUV</option>
+              <option value="grand">Grand Tourer</option>
+              <option value="limousine">Limousine</option>
+              <option value="electric">Electric</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cPrice">Price (USD) *</label>
+            <input type="number" id="cPrice" min="0" step="1000" required />
+          </div>
+          <div class="form-group">
+            <label for="cImg">Image URL *</label>
+            <input type="text" id="cImg" placeholder="https://images.unsplash.com/..." required />
+          </div>
+          <div class="form-group">
+            <label for="cFuel">Fuel / Engine</label>
+            <input type="text" id="cFuel" placeholder="6.5L V12" />
+          </div>
+          <div class="form-group">
+            <label for="cTrans">Transmission</label>
+            <input type="text" id="cTrans" placeholder="8-Speed DCT" />
+          </div>
+          <div class="form-group">
+            <label for="cKm">Mileage</label>
+            <input type="text" id="cKm" placeholder="1,500 km" />
+          </div>
+          <div class="form-group">
+            <label for="cFeatured">Featured</label>
+            <select id="cFeatured">
+              <option value="false">No</option>
+              <option value="true">Yes — show on homepage</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group img-preview-wrap">
+          <label>Image Preview</label>
+          <div class="img-preview" id="imgPreview"><span>Enter an image URL to preview</span></div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="modalCancel">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save Car</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ MESSAGE DETAIL MODAL ============ -->
+  <div class="modal-overlay" id="msgModal">
+    <div class="modal modal-sm">
+      <div class="modal-head">
+        <h3 id="msgModalTitle">Message</h3>
+        <button class="modal-close" id="msgModalClose">×</button>
+      </div>
+      <div class="msg-detail" id="msgDetail"></div>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOMER 360 MODAL ============ -->
+  <div class="modal-overlay" id="custModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Customer Profile</h3>
+        <button class="modal-close" id="custModalClose">×</button>
+      </div>
+      <div id="cust360"></div>
+    </div>
+  </div>
+
+  <!-- ============ NEW DEAL MODAL ============ -->
+  <div class="modal-overlay" id="dealModal">
+    <div class="modal modal-sm">
+      <div class="modal-head">
+        <h3>New Deal</h3>
+        <button class="modal-close" id="dealModalClose">×</button>
+      </div>
+      <form id="dealForm">
+        <div class="form-group"><label>Customer Name *</label><input type="text" id="dCustomer" required /></div>
+        <div class="form-group"><label>Vehicle Interest</label><input type="text" id="dCar" placeholder="e.g. Lamborghini Revuelto" /></div>
+        <div class="form-group"><label>Deal Value (USD) *</label><input type="number" id="dValue" min="0" required /></div>
+        <div class="form-group"><label>Stage</label>
+          <select id="dStage">
+            <option value="lead">Lead</option>
+            <option value="negotiation">Negotiation</option>
+            <option value="agreement">Agreement</option>
+            <option value="closed">Closed Won</option>
+          </select>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="dealCancel">Cancel</button>
+          <button type="submit" class="btn btn-gold">Add Deal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/cars.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
