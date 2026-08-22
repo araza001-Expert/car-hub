@@ -1,10 +1,17 @@
 # 🏎️ AutoPrime — Luxury Car Dealership & Fleet Management SaaS
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live%20Preview-C9A227?style=for-the-badge&logo=googlechrome&logoColor=white)](http://172.16.16.13:3001)
-[![License: Commercial](https://img.shields.io/badge/License-Commercial%20Tier-blue?style=for-the-badge)](mailto:araza001@example.com)
-[![Tech: HTML5 / CSS3 / Vanilla JS](https://img.shields.io/badge/Stack-Full%20Custom%20Luxury-black?style=for-the-badge&logo=javascript)](https://github.com/araza001-Expert)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20To%20View%20Website-C9A227?style=for-the-badge&logo=googlechrome&logoColor=white)](https://araza001-expert.github.io/car-hub/)
+[![Admin Console](https://img.shields.io/badge/Admin%20Console-Live%20Dashboard-3ecf8a?style=for-the-badge&logo=appveyor&logoColor=white)](https://araza001-expert.github.io/car-hub/admin.html)
+[![Commercial License](https://img.shields.io/badge/Commercial%20Tier-,500--,500+-blue?style=for-the-badge)](https://github.com/araza001-Expert)
 
 > **AutoPrime** is an ultra-premium, turnkey digital platform engineered specifically for **Luxury Car Dealerships, Exotic Car Rental Fleets, and Supercar Showrooms** across Dubai, Miami, Los Angeles, London, and worldwide high-ticket markets.
+
+---
+
+## 🌐 Instant Live Preview
+
+- 🖥️ **Customer Showcase (Frontend)**: 👉 **[https://araza001-expert.github.io/car-hub/](https://araza001-expert.github.io/car-hub/)**
+- ⚙️ **Showroom Admin Console (Backend)**: 👉 **[https://araza001-expert.github.io/car-hub/admin.html](https://araza001-expert.github.io/car-hub/admin.html)** *(User:  | Pass: )*
 
 ---
 
@@ -21,14 +28,6 @@
   - **Financial Ledger & Automated Invoices**: Generate professional invoices with 1-click CSV export.
   - **VIP Customer CRM**: Track lifetime spend, past bookings, and customer preferences.
   - **White-Label Custom Branding**: 1-click brand identity switcher (Gold, Emerald, Royal Sapphire, Crimson themes).
-
----
-
-## 🚀 Live Demo & Screenshots
-
-| Customer Showcase (Frontend) | Showroom Admin Console (Backend) |
-| :---: | :---: |
-| Hero showcase, live filters, sound engine | Fleet CRUD, Deal Pipeline, Invoices, Analytics |
 
 ---
 
@@ -58,7 +57,7 @@ For dealership owners, agencies, and enterprise buyers looking to deploy or cust
 For purchase, commercial licensing, custom deployments, or white-label partnerships:
 
 - **GitHub Profile**: [@araza001-Expert](https://github.com/araza001-Expert)
-- **Direct Inquiry**: Contact via GitHub or linked channels for live deployment demos.
+- **Direct Contact**: Reach out via GitHub Issues or contact channels for custom enterprise deployments.
 
 ---
 *© 2026 AutoPrime. Engineered for high-ticket automotive businesses.*
